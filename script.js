@@ -21,7 +21,7 @@ function updatePostmarkDate() {
         pageContent.style.opacity = '0';
         pageContent.style.transform = 'translateY(8px)';
 
-        fetch(url)
+        fetch(url, { cache: 'no-cache' })
             .then(res => res.text())
             .then(html => {
                 const parser = new DOMParser();
