@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience — Jeeva E</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- FOUC FIX: hide page content until fonts + styles are ready -->
+    <style>
+        #page-content { visibility: hidden; }
+    </style>
+
+    <style>
+        :root {
+            --yellow: #f5e6a3;
+            --yellow-dark: #e0cc72;
+            --green: #a8d8c8;
+            --green-dark: #91c2b3;
+            --pink: #f2b8a0;
+            --pink-dark: #e09f83;
+            --shadow: 3px 4px 0 rgba(0, 0, 0, 0.10);
+            --shadow-hover: 6px 8px 0 rgba(0, 0, 0, 0.13);
+            --border-cork: rgba(26, 26, 24, 0.12);
+        }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            text-align: center;
+            padding: 80px 40px 20px;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--text-color, #1a1a18);
+        }
+        .page-header p {
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8a8880;
+            margin-top: 10px;
+        }
+
+        /* ── CORK BOARD ── */
+        .corkboard {
+            max-width: 1100px;
+            margin: 30px auto 100px;
+            padding: 0 40px;
+        }
+
+        /* ── BOARD LABEL ── */
+        .board-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .board-label span {
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #8a8880;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .board-label::before, .board-label::after {
+            content: '';
+            flex: 1;
+            height: 0.5px;
+            background: var(--border-cork);
+        }
+
+        /* ── STICKY GRID ── */
+        .sticky-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        /* ── STICKY NOTE ── */
+        .sticky {
+            position: relative;
+            padding: 0 0 28px;
+            border-radius: 2px;
+            box-shadow: var(--shadow);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s, opacity 0.5s ease;
+            cursor: default;
+            opacity: 0;
+            transform: translateY(30px) rotate(var(--rot));
+        }
+        .sticky.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(var(--rot));
+        }
+        .sticky:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.02) !important;
+            box-shadow: var(--shadow-hover);
+            z-index: 10;
+        }
+
+        .sticky-1 { --rot: -2deg; background: var(--yellow); transition-delay: 0.05s; }
+        .sticky-2 { --rot: 1.5deg; background: var(--green); transition-delay: 0.15s; }
+        .sticky-3 { --rot: -1deg; background: var(--pink); transition-delay: 0.25s; }
+
+        /* fold corner */
+        .sticky::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 28px; height: 28px;
+            background: linear-gradient(225deg, rgba(0,0,0,0.06) 50%, transparent 50%);
+        }
+
+        /* top stripe */
+        .sticky-top {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border-radius: 2px 2px 0 0;
+        }
+        .sticky-1 .sticky-top { background: var(--yellow-dark); }
+        .sticky-2 .sticky-top { background: var(--green-dark); }
+        .sticky-3 .sticky-top { background: var(--pink-dark); }
+
+        /* pin */
+        .pin {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #bbb, #555);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sticky-body { padding: 0 20px; }
+
+        .sticky-num {
+            font-family: 'Caveat', cursive;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(26, 26, 24, 0.35);
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .sticky-title {
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a18;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .sticky-role {
+            display: inline-block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(26, 26, 24, 0.5);
+            border: 0.5px solid rgba(26, 26, 24, 0.25);
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .sticky-line {
+            width: 100%;
+            height: 1px;
+            background: repeating-linear-gradient(90deg,
+                    rgba(26, 26, 24, 0.15) 0px,
+                    rgba(26, 26, 24, 0.15) 6px,
+                    transparent 6px,
+                    transparent 10px);
+            margin-bottom: 14px;
+        }
+
+        .sticky-desc {
+            font-family: 'Caveat', cursive;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(26, 26, 24, 0.75);
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .sticky-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 18px;
+        }
+        .stack-tag {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(26, 26, 24, 0.08);
+            color: rgba(26, 26, 24, 0.6);
+            padding: 3px 8px;
+            border-radius: 2px;
+        }
+
+        .sticky-link {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1a1a18;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border-bottom: 1px solid rgba(26, 26, 24, 0.3);
+            padding-bottom: 2px;
+            transition: gap 0.2s;
+        }
+        .sticky-link:hover { gap: 9px; }
+
+        .annotation {
+            position: absolute;
+            font-family: 'Caveat', cursive;
+            font-size: 13px;
+            color: rgba(26, 26, 24, 0.25);
+            pointer-events: none;
+        }
+        .ann-1 { bottom: -28px; right: 12px; transform: rotate(3deg); }
+        .ann-2 { bottom: -26px; left: 10px; transform: rotate(-2deg); }
+        .ann-3 { bottom: -28px; right: 10px; transform: rotate(2deg); }
+
+        @media (max-width: 768px) {
+            .sticky-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .sticky { --rot: 0deg !important; }
+            .page-header { padding: 50px 20px 10px; }
+            .corkboard { padding: 0 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADER -->
+    <div id="page-loader" style="
+        position:fixed; inset:0; z-index:9999;
+        background:#ebe8e0;
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:center;
+        gap:18px;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    ">
+        <span style="
+            font-family:'Georgia',serif;
+            font-size:26px; letter-spacing:0.22em;
+            color:#1a1a18; font-weight:400;
+        ">JEEVA</span>
+        <div style="
+            width:120px; height:1px;
+            background:rgba(26,26,24,0.15);
+            border-radius:2px; overflow:hidden;
+        ">
+            <div id="loader-bar" style="
+                height:100%; background:#1a1a18;
+                border-radius:2px; width:0%;
+                transition:width 0.1s linear;
+            "></div>
+        </div>
+    </div>
+
+    <div class="mobile-warning">
+        <i class="fas fa-desktop"></i>
+        <h2>Desktop Mode Only</h2>
+        <p>This portfolio is designed for an immersive desktop experience. <br> Please switch to a desktop device or enable desktop mode.</p>
+    </div>
+
+    <nav class="sticky-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">JEEVA</a>
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link"><span>About</span></a></li>
+            <li><a href="projects.html" class="nav-link"><span>Projects</span></a></li>
+            <li><a href="patent.html" class="nav-link"><span>Patent</span></a></li>
+            <li><a href="experience.html" class="nav-link active"><span>Experience</span></a></li>
+            <li><a href="achievements.html" class="nav-link"><span>Achievements</span></a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="https://github.com/Jeeva-1405/" target="_blank" class="nav-icon" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jeeva-e-b4b442290/" target="_blank" class="nav-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </nav>
+
+    <main id="page-content">
+
+        <header class="page-header">
+            <h1>Experience</h1>
+            <p>Projects &amp; Collaborations</p>
+        </header>
+
+        <section class="corkboard">
+            <div class="board-label">
+                <span>Pinned to the board</span>
+            </div>
+
+            <div class="sticky-grid">
+
+                <!-- Note 1: SpeedEX -->
+                <div class="sticky sticky-1">
+                    <div class="sticky-top"><div class="pin"></div></div>
+                    <div class="sticky-body">
+                        <div class="sticky-num">01 / 03</div>
+                        <div class="sticky-title">SpeedEX</div>
+                        <div class="sticky-role">CONTRIBUTOR · COLLABORATOR</div>
+                        <div class="sticky-line"></div>
+                        <div class="sticky-desc">
+                            Built for operators who move fast. A logistics UI where real-time tracking meets atomic-precision routing — every millisecond of latency is a broken promise.
+                        </div>
+                        <div class="sticky-stack">
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">JS</span>
+                            <span class="stack-tag">LOGISTICS</span>
+                        </div>
+                        <a class="sticky-link" href="https://nareshdharmaraj.github.io/SpeedEX/" target="_blank">Visit project →</a>
+                    </div>
+                    <span class="annotation ann-1">solo build ✓</span>
+                </div>
+
+                <!-- Note 2: Lexspace -->
+                <div class="sticky sticky-2">
+                    <div class="sticky-top"><div class="pin"></div></div>
+                    <div class="sticky-body">
+                        <div class="sticky-num">02 / 03</div>
+                        <div class="sticky-title">Lexspace</div>
+                        <div class="sticky-role">UI ENGINEER · COLLABORATOR</div>
+                        <div class="sticky-line"></div>
+                        <div class="sticky-desc">
+                            Where premium furniture finds its digital home. A luxury e-commerce experience — curating silence, crafting atmosphere, one room at a time.
+                        </div>
+                        <div class="sticky-stack">
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">JS</span>
+                            <span class="stack-tag">E-COMMERCE</span>
+                        </div>
+                        <a class="sticky-link" href="https://nareshdharmaraj.github.io/Lexspace/" target="_blank">Visit project →</a>
+                    </div>
+                    <span class="annotation ann-2">solo build ✓</span>
+                </div>
+
+                <!-- Note 3: Gilded Aura -->
+                <div class="sticky sticky-3">
+                    <div class="sticky-top"><div class="pin"></div></div>
+                    <div class="sticky-body">
+                        <div class="sticky-num">03 / 03</div>
+                        <div class="sticky-title">Gilded Aura</div>
+                        <div class="sticky-role">SOLO ARCHITECT · CREATOR</div>
+                        <div class="sticky-line"></div>
+                        <div class="sticky-desc">
+                            Fashion as a digital experience. A luxury jewelry platform built solo from scratch — every pixel intentional, every interaction deliberate. User &amp; admin dashboards included.
+                        </div>
+                        <div class="sticky-stack">
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">JS</span>
+                            <span class="stack-tag">E-COMMERCE</span>
+                        </div>
+                        <a class="sticky-link" href="https://jeeva-1405.github.io/Gilded-aura/" target="_blank">Visit project →</a>
+                    </div>
+                    <span class="annotation ann-3">solo build ✓</span>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p class="footer-end-text">© 2025 Jeeva E. All rights reserved.</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+    <!-- STICKIES OBSERVER -->
+    <script>
+        function initStickies() {
+            var stickies = document.querySelectorAll('.sticky');
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            stickies.forEach(function (s) { observer.observe(s); });
+        }
+        document.addEventListener('pageSwapped', initStickies);
+    </script>
+
+    <!-- LOADER + FOUC FIX -->
+    <script>
+        (function () {
+            var bar = document.getElementById('loader-bar');
+            var loader = document.getElementById('page-loader');
+            var content = document.getElementById('page-content');
+            var w = 0;
+            var t = setInterval(function () {
+                w += Math.random() * 12;
+                if (w > 90) w = 90;
+                bar.style.width = w + '%';
+            }, 100);
+
+            function hideLoader() {
+                clearInterval(t);
+                bar.style.width = '100%';
+                content.style.visibility = 'visible';
+                initStickies();
+                setTimeout(function () {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                }, 300);
+            }
+
+            window.addEventListener('load', function () {
+                // Wait for all fonts to finish rendering
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(hideLoader);
+                } else {
+                    hideLoader();
+                }
+            });
+        })();
+    </script>
+
+    <!-- BACK TO TOP -->
+    <div id="btt-wrap" style="
+        position:fixed; bottom:32px; right:32px;
+        display:flex; align-items:center; gap:12px;
+        opacity:0; visibility:hidden;
+        transition:opacity 0.35s ease, visibility 0.35s ease;
+        z-index:999;
+    ">
+        <span style="
+            font-family:'DM Sans',sans-serif;
+            font-size:11px; letter-spacing:0.1em;
+            color:#6b6960; text-transform:uppercase;
+        ">Back to top</span>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+            width:44px; height:44px;
+            border:1px solid #1a1a18;
+            border-radius:50%;
+            background:transparent;
+            cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            transition:background 0.2s;
+        "
+        onmouseover="this.style.background='#1a1a18';this.querySelector('path').style.stroke='#ebe8e0'"
+        onmouseout="this.style.background='transparent';this.querySelector('path').style.stroke='#1a1a18'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 19V5M5 12l7-7 7 7" stroke="#1a1a18" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.2s"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        (function () {
+            var el = document.getElementById('btt-wrap');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    el.style.opacity = '1';
+                    el.style.visibility = 'visible';
+                } else {
+                    el.style.opacity = '0';
+                    el.style.visibility = 'hidden';
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

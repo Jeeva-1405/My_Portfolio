@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patent — Jeeva E</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<!-- LOADER: place as first child of body -->
+<div id="page-loader" style="
+  position:fixed; inset:0; z-index:9999;
+  background:#ebe8e0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:18px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+">
+  <span style="
+    font-family:'Georgia',serif;
+    font-size:26px; letter-spacing:0.22em;
+    color:#1a1a18; font-weight:400;
+  ">JEEVA</span>
+
+  <div style="
+    width:120px; height:1px;
+    background:rgba(26,26,24,0.15);
+    border-radius:2px; overflow:hidden;
+  ">
+    <div id="loader-bar" style="
+      height:100%; background:#1a1a18;
+      border-radius:2px; width:0%;
+      transition:width 0.1s linear;
+    "></div>
+  </div>
+</div>
+
+    <div class="mobile-warning">
+        <i class="fas fa-desktop"></i>
+        <h2>Desktop Mode Only</h2>
+        <p>This portfolio is designed for an immersive desktop experience. <br> Please switch to a desktop device or enable desktop mode.</p>
+    </div>
+
+    <nav class="sticky-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">JEEVA</a>
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html"        class="nav-link"       ><span>About</span></a></li>
+            <li><a href="projects.html"     class="nav-link"       ><span>Projects</span></a></li>
+            <li><a href="patent.html"       class="nav-link active"><span>Patent</span></a></li>
+            <li><a href="experience.html"   class="nav-link"       ><span>Experience</span></a></li>
+            <li><a href="achievements.html" class="nav-link"       ><span>Achievements</span></a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="https://github.com/Jeeva-1405/" target="_blank" class="nav-icon" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jeeva-e-b4b442290/" target="_blank" class="nav-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </nav>
+
+    <main id="page-content">
+
+        <section class="patent-section animate-on-scroll" id="patent">
+            <div class="patent-container">
+                <div class="patent-header-content">
+                    <h1>Patented Autonomous Mine Rover</h1>
+                    <p class="tagline">Designing reliable systems for extreme subsurface environments.</p>
+                    <div class="patent-info">
+                        <span class="badge">Application no : 202541104590</span>
+                    </div>
+                </div>
+                <div class="patent-body">
+                    <div class="media-container">
+                        <img src="patent-new.png" alt="High-quality image of the Mine Rover prototype.">
+                    </div>
+                    <div class="summary-text">
+                        <h2>The Challenge &amp; My Solution</h2>
+                        <p><strong>The Problem:</strong> In hazardous mining environments, human safety is at high risk due
+                            to the presence of toxic gases, unstable terrain, and poor visibility. Current exploration
+                            methods often rely on manual intervention, which increases the danger to personnel.</p>
+                        <p><strong>My Solution:</strong> The main concern inside the mine is the lack of visibility as it
+                            gets deeper the vision is almost zero. So the rover is integrated with LiDAR A1M8 sensor so that
+                            we can easily detect the obstacles and also helps us to detect the cracks and debris.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer"><p class="footer-end-text">© 2025 Jeeva E. All rights reserved.</p></footer>
+
+    </main><!-- /#page-content -->
+
+    <script src="script.js"></script>
+
+<!-- LOADER SCRIPT: add before </body> -->
+<script>
+(function(){
+  var bar = document.getElementById('loader-bar');
+  var loader = document.getElementById('page-loader');
+  var w = 0;
+  var t = setInterval(function(){
+    w += Math.random() * 12;
+    if(w > 90) w = 90;
+    bar.style.width = w + '%';
+  }, 100);
+  window.addEventListener('load', function(){
+    clearInterval(t);
+    bar.style.width = '100%';
+    setTimeout(function(){
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+    }, 300);
+  });
+})();
+</script>
+<!-- BACK TO TOP: paste before </body> -->
+<div id="btt-wrap" style="
+  position:fixed; bottom:32px; right:32px;
+  display:flex; align-items:center; gap:12px;
+  opacity:0; visibility:hidden;
+  transition:opacity 0.35s ease, visibility 0.35s ease;
+  z-index:999;
+">
+  <span style="
+    font-family:'your-sans',sans-serif;
+    font-size:11px; letter-spacing:0.1em;
+    color:#6b6960; text-transform:uppercase;
+  ">Back to top</span>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    style="
+      width:44px; height:44px;
+      border:1px solid #1a1a18;
+      border-radius:50%;
+      background:transparent;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    "
+    onmouseover="this.style.background='#1a1a18';
+      this.querySelector('path').style.stroke='#ebe8e0'"
+    onmouseout="this.style.background='transparent';
+      this.querySelector('path').style.stroke='#1a1a18'"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 19V5M5 12l7-7 7 7"
+        stroke="#1a1a18" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round"
+        style="transition:stroke 0.2s"
+      />
+    </svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var el = document.getElementById('btt-wrap');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    } else {
+      el.style.opacity = '0';
+      el.style.visibility = 'hidden';
+    }
+  });
+})();
+</script>
+</body>
+</html>

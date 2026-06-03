@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Jeeva E</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<!-- LOADER: place as first child of body -->
+<div id="page-loader" style="
+  position:fixed; inset:0; z-index:9999;
+  background:#ebe8e0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:18px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+">
+  <span style="
+    font-family:'Georgia',serif;
+    font-size:26px; letter-spacing:0.22em;
+    color:#1a1a18; font-weight:400;
+  ">JEEVA</span>
+
+  <div style="
+    width:120px; height:1px;
+    background:rgba(26,26,24,0.15);
+    border-radius:2px; overflow:hidden;
+  ">
+    <div id="loader-bar" style="
+      height:100%; background:#1a1a18;
+      border-radius:2px; width:0%;
+      transition:width 0.1s linear;
+    "></div>
+  </div>
+</div>
+
+    <div class="fixed-bg">
+        <canvas id="bgCanvas"></canvas>
+    </div>
+
+    <!-- Mobile Warning Overlay -->
+    <div class="mobile-warning">
+        <i class="fas fa-desktop"></i>
+        <h2>Desktop Mode Only</h2>
+        <p>This portfolio is designed for an immersive desktop experience. <br> Please switch to a desktop device or
+            enable desktop mode.</p>
+    </div>
+
+    <nav class="sticky-nav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">JEEVA</a>
+        </div>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link"><span>About</span></a></li>
+            <li><a href="projects.html" class="nav-link"><span>Projects</span></a></li>
+            <li><a href="patent.html" class="nav-link"><span>Patent</span></a></li>
+            <li><a href="experience.html" class="nav-link"><span>Experience</span></a></li>
+            <li><a href="achievements.html" class="nav-link"><span>Achievements</span></a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="https://github.com/Jeeva-1405/" target="_blank" class="nav-icon" title="GitHub"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/jeeva-e-b4b442290/" target="_blank" class="nav-icon"
+                title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </nav>
+    <section class="contact-info animate-on-scroll" id="contact">
+        <h2>Contact</h2>
+
+        <div class="telegram-card">
+            <!-- Decorative Top Border or Stamps -->
+            <div class="telegram-postal-marks">
+                <div class="postage-stamp">
+                    <span class="stamp-text">INDIA POST</span>
+                </div>
+                <div class="postmark-circle">
+                    <span class="postmark-date">01.06.26</span>
+                    <span class="postmark-city">COIMBATORE</span>
+                </div>
+            </div>
+
+            <!-- Letter Body -->
+            <div class="telegram-body">
+                <div class="telegram-salutation">DEAR RECRUITER,</div>
+                <p class="telegram-text">
+                    I AM A DEDICATED ELECTRONICS AND COMM. ENGINEERING STUDENT PASSIONATE ABOUT DEVELOPING REAL-WORLD
+                    HARDWARE SYSTEMS AND SOPHISTICATED FULL-STACK SOFTWARE APPLICATIONS. MY TARGET IS TO MERGE
+                    PHYSICAL SYSTEMS WITH ELEGANT DIGITAL ARCHITECTURES. I AM CURRENTLY OPEN TO ADVENTUROUS ROLES,
+                    INTERNSHIPS AND JOINT ENGINEERING VENTURES. CHOOSE A CHANNEL BELOW TO ESTABLISH AN OFFICIAL
+                    CONNECTION.
+                </p>
+            </div>
+
+            <!-- Wax Seal / Action Button -->
+            <div class="telegram-action">
+                <a href="mailto:jeevamkce14@gmail.com?subject=Opportunity%20Inquiry%20-%20Jeeva%20E&body=Dear%20Jeeva,%0A%0AI%20reached%20out%20via%20your%20telegram%20portfolio..."
+                    class="wax-seal" title="Send Direct Email">
+                    <div class="wax-seal-inner">
+                        <span class="wax-seal-imprint">J</span>
+                    </div>
+                </a>
+                <span class="wax-seal-label">CLICK WAX SEAL TO SEND DIRECT MAIL</span>
+            </div>
+
+            <!-- Signature / Socials -->
+            <div class="telegram-footer">
+                <div class="telegram-signoff">YOURS TRULY,</div>
+                <div class="telegram-signature">Jeeva E</div>
+
+                <div class="telegram-links">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jeevamkce14@gmail.com" target="_blank"
+                        class="telegram-stamp stamp-email" title="Gmail">
+                        <i class="fas fa-envelope"></i> GMAIL
+                    </a>
+                    <a href="https://www.linkedin.com/in/jeeva-e-b4b442290/" target="_blank"
+                        class="telegram-stamp stamp-linkedin" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i> LINKEDIN
+                    </a>
+                    <a href="https://github.com/Jeeva-1405/" target="_blank" class="telegram-stamp stamp-github"
+                        title="GitHub">
+                        <i class="fab fa-github"></i> GITHUB
+                    </a>
+                    <a href="tel:6374721817" class="telegram-stamp stamp-mobile" title="Mobile">
+                        <i class="fas fa-phone-alt"></i> CALL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p class="footer-end-text">© 2025 Jeeva E. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+
+<!-- LOADER SCRIPT: add before </body> -->
+<script>
+(function(){
+  var bar = document.getElementById('loader-bar');
+  var loader = document.getElementById('page-loader');
+  var w = 0;
+  var t = setInterval(function(){
+    w += Math.random() * 12;
+    if(w > 90) w = 90;
+    bar.style.width = w + '%';
+  }, 100);
+  window.addEventListener('load', function(){
+    clearInterval(t);
+    bar.style.width = '100%';
+    setTimeout(function(){
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+    }, 300);
+  });
+})();
+</script>
+<!-- BACK TO TOP: paste before </body> -->
+<div id="btt-wrap" style="
+  position:fixed; bottom:32px; right:32px;
+  display:flex; align-items:center; gap:12px;
+  opacity:0; visibility:hidden;
+  transition:opacity 0.35s ease, visibility 0.35s ease;
+  z-index:999;
+">
+  <span style="
+    font-family:'your-sans',sans-serif;
+    font-size:11px; letter-spacing:0.1em;
+    color:#6b6960; text-transform:uppercase;
+  ">Back to top</span>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    style="
+      width:44px; height:44px;
+      border:1px solid #1a1a18;
+      border-radius:50%;
+      background:transparent;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    "
+    onmouseover="this.style.background='#1a1a18';
+      this.querySelector('path').style.stroke='#ebe8e0'"
+    onmouseout="this.style.background='transparent';
+      this.querySelector('path').style.stroke='#1a1a18'"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 19V5M5 12l7-7 7 7"
+        stroke="#1a1a18" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round"
+        style="transition:stroke 0.2s"
+      />
+    </svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var el = document.getElementById('btt-wrap');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    } else {
+      el.style.opacity = '0';
+      el.style.visibility = 'hidden';
+    }
+  });
+})();
+</script>
+</body>
+
+</html>
